@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">AILD Example</string>
+    <string name="app_name">AIDL Example</string>
     <string name="click_me">Click me</string>
+    <string name="click_to_call_service">Click to call <b>Service</b></string>
 </resources>
