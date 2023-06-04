@@ -18,7 +18,7 @@ android {
     buildTypes {
         release {
             def aidlServicePackage = "com.tejpratapsingh.aidlserver"
-            def aidlServiceService = "com.tejpratapsingh.aidlserver.aidl.MyAidlService"
+            def aidlServiceService = "com.tejpratapsingh.aidlserver.aidl.CalculatorService"
 
             debug {
                 manifestPlaceholders = [aidlServicePackage: aidlServicePackage]

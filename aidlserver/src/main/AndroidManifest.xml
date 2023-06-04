@@ -10,7 +10,7 @@
         android:theme="@style/Theme.AILDExample">
         
         <service
-            android:name=".aidl.MyAidlService"
+            android:name=".aidl.CalculatorService"
             android:enabled="true"
             android:exported="true" />
 

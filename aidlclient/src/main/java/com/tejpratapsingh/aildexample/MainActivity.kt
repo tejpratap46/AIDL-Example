@@ -9,17 +9,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.tejpratapsingh.aildexample.databinding.ActivityMainBinding
 import com.tejpratapsingh.aildlib.BuildConfig
-import com.tejpratapsingh.aildlib.IExampleAidlInterface
+import com.tejpratapsingh.aildlib.ICalculator
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
-    private var aidlService: IExampleAidlInterface? = null
+    private var aidlService: ICalculator? = null
 
     private lateinit var binding: ActivityMainBinding
 
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            aidlService = IExampleAidlInterface.Stub.asInterface(service)
+            aidlService = ICalculator.Stub.asInterface(service)
             Toast.makeText(applicationContext, "Service Connected", Toast.LENGTH_LONG).show()
         }
 
@@ -42,7 +43,13 @@ class MainActivity : AppCompatActivity() {
         bindService(serviceIntent, serviceConnection, BIND_AUTO_CREATE)
 
         binding.buttonCallService.setOnClickListener {
-            aidlService?.basicTypes(0, 0, false, 0f, 0.0, "")
+            aidlService?.add(2, 2)?.let {
+                Toast.makeText(
+                    applicationContext,
+                    String.format(Locale.getDefault(), "Sum is: %d", it),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 }

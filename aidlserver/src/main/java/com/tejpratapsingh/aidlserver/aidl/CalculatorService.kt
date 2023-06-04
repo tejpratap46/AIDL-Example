@@ -4,9 +4,9 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 
-class MyAidlService : Service() {
+class CalculatorService : Service() {
 
     override fun onBind(intent: Intent): IBinder {
-        return IExampleAidlImpl
+        return CalculatorImpl
     }
 }
