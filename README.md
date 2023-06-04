@@ -1,5 +1,9 @@
 # AIDL Example
 
+ Clint | Service | Call
+|---|---|---|
+| ![image](https://github.com/tejpratap46/AIDL-Example/assets/10910252/51ee8f50-332b-43a1-b752-e7fb3c6699d7) | ![image](https://github.com/tejpratap46/AIDL-Example/assets/10910252/b59fe9db-822f-44d6-a388-7851475ad9a8) | ![image](https://github.com/tejpratap46/AIDL-Example/assets/10910252/6dbf2a38-b8ab-4a4f-a820-59a9a770291b) |
+
 ## AIDL needs 3 things:
 
 1. An AIDL Interface.
