@@ -10,17 +10,29 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tejpratapsingh.aildexample.databinding.ActivityMainBinding
 import com.tejpratapsingh.aildlib.BuildConfig
 import com.tejpratapsingh.aildlib.ICalculator
+import com.tejpratapsingh.aildlib.IChangeListener
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private var aidlService: ICalculator? = null
+    private val aidlCallback: IChangeListener = object : IChangeListener.Stub() {
+        override fun onAdded(result: Int) {
+            Toast.makeText(
+                applicationContext,
+                String.format(Locale.getDefault(), "Sum is: %d", result),
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
 
     private lateinit var binding: ActivityMainBinding
 
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             aidlService = ICalculator.Stub.asInterface(service)
+            aidlService?.registerListener(aidlCallback)
+            
             Toast.makeText(applicationContext, "Service Connected", Toast.LENGTH_LONG).show()
         }
 
@@ -43,13 +55,7 @@ class MainActivity : AppCompatActivity() {
         bindService(serviceIntent, serviceConnection, BIND_AUTO_CREATE)
 
         binding.buttonCallService.setOnClickListener {
-            aidlService?.add(2, 2)?.let {
-                Toast.makeText(
-                    applicationContext,
-                    String.format(Locale.getDefault(), "Sum is: %d", it),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
+            aidlService?.add(2, 2)
         }
     }
 }
