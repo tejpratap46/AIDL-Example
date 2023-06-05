@@ -1,4 +1,4 @@
-// ICalculator.aidl
+// ICalculatorCallback.aidl
 package com.tejpratapsingh.aildlib;
 
 import com.tejpratapsingh.aildlib.ICalculatorCallback;
